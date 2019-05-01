@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="navbar">
+  <view class="navbar-item" wx:for="{{navbar}}" wx:for-index="idx"
+  data-idx="{{idx}}" bindtap="switchNav">
+      <text class="navbar-text {{currentNavbar==idx ? 'active' : ''}}">
+        {{item}}
+      </text>
+  </view>
+</view>
