@@ -6,6 +6,14 @@ Page({
   data: {
     navbar:['精选','景点'],
     currentNavbar: '0',
+    swipers: [
+"https://hbimg.huabanimg.com/112e70edbbc97163d1e5e410d4021974e179c120dc41-9azZq8_fw658",
+"https://hbimg.huabanimg.com/378d3fbfbfac76f345cd053a74a3c4c1c33194dd6ef2-DjpIna_fw658",
+"https://hbimg.huabanimg.com/a40ebd571180c2a0c7dda29b1394e70b696b586f1017d-F3EDy7_fw658",
+"https://hbimg.huabanimg.com/8343241621a028dc0e00a6023c9995128b599fc410d02-5c696S_fw658", 
+"https://hbimg.huabanimg.com/bd78af5fe096576acadedf8bab87a6fcd15c857ca85f-xx4te7_fw658",
+"https://hbimg.huabanimg.com/4b16af5288c13519de48b51dad7701d26286d09118afe-pasLcg_fw658",    "https://hbimg.huabanimg.com/04df552670a9985d89d68f73a83cf14aa0cb5f9011381-p9982F_fw658",   "https://hbimg.huabanimg.com/5970d4fdd51a6cefbb39ab4880bba3a38da436ae143b3-FEWw6v_fw658", "https://hbimg.huabanimg.com/d0c89d68d2fae039bf43f28b12c0eb56ba149fabee9f-26HSH3_fw658",
+"https://hbimg.huabanimg.com/d88888ef66d0aacbf594c9affd4df139b2638f5d12b9b-e9291e_fw658"],
   },
   //事件处理函数
   bindViewTap: function() {

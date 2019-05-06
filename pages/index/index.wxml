@@ -10,7 +10,18 @@
 
 <!--精选--->
 <scroll-view class="choiceness-item-container {{currentNavbar==0 ? '' : 'hidden'}}" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="pullUpLoad">
-精选
+<swiper indicator-dots="true" autoplay="true" interval="4000" duration="600"
+    style="height:{{systemInfo.windowWidth/2}}px">
+    <block wx:for="{{swipers}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="750"/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="line-text">
+    精选推荐
+  </view>
 
 </scroll-view>
 
