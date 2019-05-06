@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    navbar:['精选','分类'],
+    navbar:['精选','景点'],
     currentNavbar: '0',
   },
   //事件处理函数
@@ -48,5 +48,20 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  /**
+   * 切换导航页tab
+   */
+  switchNav (e) {
+    this.setData({
+      currentNavbar:e.currentTarget.dataset.idx
+    })
+  },
+  /**
+   * 下拉刷新，这里只显示刷新图标即可
+   */
+  pullUpLoad (e) {
+    wx.startPullDownRefresh
+    // wx.stopPullDownRefresh()
   }
 })

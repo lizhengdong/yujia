@@ -7,3 +7,14 @@
       </text>
   </view>
 </view>
+
+<!--精选--->
+<scroll-view class="choiceness-item-container {{currentNavbar==0 ? '' : 'hidden'}}" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="pullUpLoad">
+精选
+
+</scroll-view>
+
+<!-- 景点 -->
+<scroll-view class="scenic-item-container {{currentNavbar==1 ? '' : 'hidden'}}">
+景点
+</scroll-view>
