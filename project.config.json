@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件",
-  "cloudfunctionRoot": "./functions/",
-  "packOptions": {
+	"cloudfunctionRoot": "functions/",
+	"packOptions": {
 		"ignore": []
 	},
 	"setting": {
@@ -22,6 +22,7 @@
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,
