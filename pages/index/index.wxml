@@ -1,8 +1,7 @@
 <!--index.wxml-->
 <view class="navbar">
-  <view class="navbar-item" wx:for="{{navbar}}" wx:for-index="idx"
-  data-idx="{{idx}}" bindtap="switchNav">
-      <text class="navbar-text {{currentNavbar==idx ? 'active' : ''}}">
+  <view class="navbar-item" wx:for="{{navbar}}" wx:for-index="idx" data-idx="{{idx}}" bindtap="switchNav">
+    <text class="navbar-text {{currentNavbar==idx ? 'active' : ''}}">
         {{item}}
       </text>
   </view>
@@ -10,11 +9,10 @@
 
 <!--精选--->
 <scroll-view class="choiceness-item-container {{currentNavbar==0 ? '' : 'hidden'}}" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="pullUpLoad">
-<swiper indicator-dots="true" autoplay="true" interval="4000" duration="600"
-    style="height:{{systemInfo.windowWidth/2}}px">
+  <swiper indicator-dots="true" autoplay="true" interval="4000" duration="600" style="height:{{systemInfo.windowWidth/2}}px">
     <block wx:for="{{swipers}}">
       <swiper-item>
-        <image src="{{item}}" class="slide-image" width="750"/>
+        <image src="{{item}}" class="slide-image" width="750" />
       </swiper-item>
     </block>
   </swiper>
@@ -23,41 +21,37 @@
     精选推荐
   </view>
 
-<block wx:for-items="{{yujiaList}}" wx:for-item="yujia">
-      <view class="yujia-item" bindtap="viewDetail" data-id="{{yujia.id}}" data-title="{{yujia.name}}">
-        <view class="yujia-image">
-          <image src="{{yujia.avatar}}"></image>
+  <block wx:for-items="{{yujiaList}}" wx:for-item="yujia">
+    <view class="yujia-item" bindtap="viewDetail" data-id="{{yujia.id}}" data-title="{{yujia.name}}">
+      <image src="{{yujia.avatar}}" style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowWidth*item.h/item.w}}px"></image>
+      <view class="yujia-header">
+        <text>{{yujia.name}}</text>
+        <view class="yujia-view">
+          <image src="../../images/eye.png" class="yujia-eye"></image>
+          {{yujia.pv}} 浏览
         </view>
-        <view class="yujia-info">
-          <view>
-            <text class="yujia-name">{{yujia.name}}</text>
-            <text class="yujia-year">{{yujia.short_address}}</text>
-          </view>
-          <view class="yujia-nearby">
-              <text class="label">联系方式</text>
-              <block>
-              <text class="nearby">{{yujia.tel}}</text>
-            </block>
-          </view>
-          <view class="directors">
-            <text class="label">导演</text>
-            <block wx:for-items="{{yujia.directors}}" wx:for-item="director">
-              <text class="person">{{director.name}}</text>
-            </block>
-          </view>
-          <view class="casts">
-            <text class="label">主演</text>
-            <block wx:for-items="{{yujia.casts}}" wx:for-item="cast">
-              <text class="person">{{cast.name}}</text>
-            </block>
-          </view>
-        </view> 
       </view>
-    </block>
+      <view class='yujia-addr-tel'>
+        <view class="yujia-address">
+          <text>{{yujia.short_address}}</text>
+        </view>
+        <view class="yujia-tel" bindtap='copyTel' data-tel="{{yujia.tel}}">
+          <text>{{yujia.tel}}</text>
+        </view>
+      </view>
+      <view class='yujia-short-desc'>
+        <text>{{yujia.short_desc}}</text>
+      </view>
+      <view class='yujia-detail clearfix'>
+        <view class='yujia-detail-link'>
+          <navigator url='/yujiaDetail/yujiaDetail'>详情 >></navigator>
+        </view>
+      </view>
+    </view>
+  </block>
 </scroll-view>
 
 <!-- 景点 -->
 <scroll-view class="scenic-item-container {{currentNavbar==1 ? '' : 'hidden'}}">
-景点
+  景点
 </scroll-view>
-

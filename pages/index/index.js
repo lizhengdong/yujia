@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    navbar:['精选','景点'],
+    navbar: ['精选', '景点'],
     currentNavbar: '0',
     swipers: [],
     yujiaList: []
@@ -15,7 +15,7 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad: function() {
     // 加载滑屏图片
     this.getIndexSwipers()
     this.getYujiaList()
@@ -31,15 +31,15 @@ Page({
   /**
    * 切换导航页tab
    */
-  switchNav (e) {
+  switchNav(e) {
     this.setData({
-      currentNavbar:e.currentTarget.dataset.idx
+      currentNavbar: e.currentTarget.dataset.idx
     })
   },
   /**
    * 下拉刷新，这里只显示刷新图标即可
    */
-  onPullDownRefresh (e) {
+  onPullDownRefresh(e) {
     // wx.startPullDownRefresh
     console.log('pull down refresh');
     this.getIndexSwipers()
@@ -51,7 +51,7 @@ Page({
     wx.cloud.init()
     wx.cloud.callFunction({
       // 云函数名称
-      name:'getIndexSwipers',
+      name: 'getIndexSwipers',
       data: {
 
       },
@@ -62,7 +62,7 @@ Page({
         })
         let picArray = []
         let data = res.result.data
-        for(let i=0,len=data.length;i<len;i++){
+        for (let i = 0, len = data.length; i < len; i++) {
           let swiperItem = data[i]
           picArray.push(swiperItem['pic']);
         }
@@ -94,5 +94,19 @@ Page({
       },
       fail: console.error
     })
-  }
+  },
+  copyTel: function(e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.tel,
+      success: function(res) {
+        wx.getClipboardData({
+          success: function(res) {
+            wx.showToast({
+              title: '复制手机号成功'
+            })
+          }
+        })
+      }
+    })
+  },
 })
