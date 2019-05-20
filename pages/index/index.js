@@ -44,10 +44,11 @@ Page({
     console.log('pull down refresh');
     this.getIndexSwipers()
     this.getYujiaList()
-    // wx.stopPullDownRefresh()
+    wx.stopPullDownRefresh()
   },
   getIndexSwipers(e) {
-    var that = this
+    console.log('加载首页滑屏')
+    let that = this
     wx.cloud.init()
     wx.cloud.callFunction({
       // 云函数名称
@@ -74,6 +75,7 @@ Page({
     })
   },
   getYujiaList(e) {
+    console.log('加载渔家列表')
     var that = this
     wx.cloud.init()
     wx.cloud.callFunction({
@@ -107,6 +109,22 @@ Page({
           }
         })
       }
+    })
+  },
+  addViewNum: function(e) {
+    let that = this;
+    let id = e.currentTarget.dataset.id;
+    wx.cloud.init()
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'addYujiaPv',
+      data: {
+        id: id,
+      },
+      success(res) {
+        console.log('增加pv')
+      },
+      fail: console.error
     })
   },
 })
