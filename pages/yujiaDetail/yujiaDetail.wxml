@@ -1,2 +1,28 @@
 <!--pages/yujiaDetail/yujiaDetail.wxml-->
-<text>pages/yujiaDetail/yujiaDetail.wxml</text>
+<view>
+  <image wx:for="{{yujia.pics}}" src="{{item}}" style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowWidth*item.h/item.w}}px" mode="aspectFit">
+  </image>
+  <view class="yujia-header">
+    <text>{{yujia.name}}</text>
+    <view class="yujia-view">
+      <image src="../../images/eye.png" class="yujia-eye"></image>
+      {{yujia.pv}} 浏览
+    </view>
+  </view>
+  <view class="yujia-category">
+    <text class="yujia-desc-title">渔家地址：</text>
+    <text>{{yujia.address}}</text>
+  </view>
+  <view class="yujia-category">
+    <text class="yujia-desc-title">渔家介绍：</text>
+    <text>{{yujia.desc}}</text>
+  </view>
+  <view class="yujia-category">
+    <text class="yujia-desc-title">附近景点：</text>
+    <text>{{yujia.nearby_attraction}}</text>
+  </view>
+  <view class='yujia-category' wx:if="{{yujia.hasLocation}}">
+    <text class="yujia-desc-title">渔家地图：</text>
+    <map id="map" longitude="{{yujia.longitude}}" latitude="{{yujia.latitude}}" scale="12" markers="{{markers}}" show-location style="width: 100%; height: 300px;"></map>
+  </view>
+</view>

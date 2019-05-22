@@ -5,62 +5,106 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    yujia: {},
+    yujiaId: '',
+    markers: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    this.setData({
+      yujiaId: options.id,
+    });
+    this.getYujiaInfo();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
+  onPullDownRefresh: function() {
+    this.getYujiaInfo();
+    wx.stopPullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
-  }
+  },
+
+  getYujiaInfo(e) {
+    console.log('加载渔家信息')
+    var that = this
+    wx.cloud.init()
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'getYujiaItem',
+      data: {
+        id: that.yujiaId
+      },
+      success(res) {
+        console.log('请求渔家信息')
+        that.setData({
+          yujia: []
+        })
+        console.log(res.result)
+        that.setData({
+          yujia: res.result.data
+        })
+        if (res.result.data.hasLocation){
+          that.setData({
+            markers: []
+          })
+          let markerItem = {
+            id: 1,
+            latitude: res.result.data.latitude,
+            longitude: res.result.data.longitude,
+            name: res.result.data.name
+          }
+          that.setData({
+            markers: [markerItem]
+          })
+        }
+      },
+      fail: console.error
+    })
+  },
 })
