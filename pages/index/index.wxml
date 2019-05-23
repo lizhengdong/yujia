@@ -23,7 +23,7 @@
 
   <block wx:for-items="{{yujiaList}}" wx:for-item="yujia">
     <view class="yujia-item" bindtap="addViewNum" data-id="{{yujia.id}}" data-title="{{yujia.name}}">
-      <image src="{{yujia.avatar}}" style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowWidth*item.h/item.w}}px"></image>
+      <image src="{{yujia.avatar}}" style="width:100%;height:{{systemInfo.windowWidth*item.h/item.w}}px"></image>
       <view class="yujia-header">
         <text>{{yujia.name}}</text>
         <view class="yujia-view">

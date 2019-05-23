@@ -1,6 +1,6 @@
 <!--pages/yujiaDetail/yujiaDetail.wxml-->
 <view>
-  <image wx:for="{{yujia.pics}}" src="{{item}}" style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowWidth*item.h/item.w}}px" mode="aspectFit">
+  <image wx:for="{{yujia.pics}}" src="{{item}}" style="width:100%;height:{{systemInfo.windowWidth*item.h/item.w}}px" mode="aspectFit">
   </image>
   <view class="yujia-header">
     <text>{{yujia.name}}</text>
