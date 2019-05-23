@@ -53,5 +53,28 @@
 
 <!-- 景点 -->
 <scroll-view class="scenic-item-container {{currentNavbar==1 ? '' : 'hidden'}}">
-  景点
+  <view class="attraction-view" wx:for-items="{{attractions}}" wx:for-item="attraction">
+    <swiper indicator-dots="true" autoplay="true" interval="4000" duration="600" style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowWidth*item.h/item.w}}px">
+      <block wx:for="{{attraction.pics}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="750" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="yujia-header">
+      <text>{{attraction.name}}</text>
+    </view>
+    <view class="yujia-category">
+      <text class="yujia-desc-title">介绍：</text>
+      <text>{{attraction.desc}}</text>
+    </view>
+    <view class="yujia-category">
+      <text class="yujia-desc-title">票价：</text>
+      <text>{{attraction.ticket_price}}</text>
+    </view>
+    <view class="yujia-category">
+      <text class="yujia-desc-title">开放时间：</text>
+      <text>{{attraction.open_time}}</text>
+    </view>
+  </view>
 </scroll-view>

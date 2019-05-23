@@ -7,6 +7,7 @@ Page({
   data: {
     yujia: {},
     yujiaId: '',
+    yujiaName: '',
     markers: []
   },
 
@@ -67,7 +68,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    let yujiaName = this.data.yujiaName;
+    let yujiaId = this.data.yujiaId;
+    console.log('转发页面')
+    console.log(yujiaName)
+    console.log(yujiaId)
+    let shareObj = {
+      title: yujiaName,
+      path: '/yujiaDetail/yujiaDetail?id=' + yujiaId
+    }
+    return shareObj
   },
 
   getYujiaInfo(e) {
@@ -89,7 +99,10 @@ Page({
         that.setData({
           yujia: res.result.data
         })
-        if (res.result.data.hasLocation){
+        that.setData({
+          yujiaName: res.result.data.name
+        })
+        if (res.result.data.hasLocation) {
           that.setData({
             markers: []
           })

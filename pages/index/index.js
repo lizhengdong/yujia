@@ -7,7 +7,8 @@ Page({
     navbar: ['精选', '景点'],
     currentNavbar: '0',
     swipers: [],
-    yujiaList: []
+    yujiaList: [],
+    attractions: []
   },
   //事件处理函数
   bindViewTap: function() {
@@ -19,6 +20,7 @@ Page({
     // 加载滑屏图片
     this.getIndexSwipers()
     this.getYujiaList()
+    this.getAttractions()
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -44,6 +46,7 @@ Page({
     console.log('pull down refresh');
     this.getIndexSwipers()
     this.getYujiaList()
+    this.getAttractions()
     wx.stopPullDownRefresh()
   },
   getIndexSwipers(e) {
@@ -126,5 +129,34 @@ Page({
       },
       fail: console.error
     })
+  },
+  getAttractions: function(e) {
+    console.log('加载景点列表')
+    var that = this
+    wx.cloud.init()
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'getAttractions',
+      data: {
+
+      },
+      success(res) {
+        console.log('景点列表')
+        that.setData({
+          attractions: []
+        })
+        console.log(res.result)
+        that.setData({
+          attractions: res.result.data
+        })
+      },
+      fail: console.error
+    })
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '日照渔家乐精选',
+      path: '/index/index'
+    }
   },
 })
