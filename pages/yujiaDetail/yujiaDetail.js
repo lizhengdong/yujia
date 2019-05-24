@@ -15,6 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log('传参的id:' + options.id)
     this.setData({
       yujiaId: options.id,
     });
@@ -81,14 +82,14 @@ Page({
   },
 
   getYujiaInfo(e) {
-    console.log('加载渔家信息')
+    console.log('加载渔家信息,id:' + this.data.yujiaId)
     var that = this
     wx.cloud.init()
     wx.cloud.callFunction({
       // 云函数名称
       name: 'getYujiaItem',
       data: {
-        id: that.yujiaId
+        id: that.data.yujiaId
       },
       success(res) {
         console.log('请求渔家信息')

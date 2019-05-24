@@ -108,7 +108,7 @@
 
 .yujia-detail {
   padding: 5px 15px;
-  font-size: 10px;
+  font-size: 12px;
   border-bottom: 1px solid #b8b8b8;
 }
 

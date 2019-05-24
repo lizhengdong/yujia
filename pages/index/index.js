@@ -117,6 +117,7 @@ Page({
   addViewNum: function(e) {
     let that = this;
     let id = e.currentTarget.dataset.id;
+    console.log('开始增加pv:' + id)
     wx.cloud.init()
     wx.cloud.callFunction({
       // 云函数名称
@@ -125,7 +126,7 @@ Page({
         id: id,
       },
       success(res) {
-        console.log('增加pv')
+        console.log('增加pv完成')
       },
       fail: console.error
     })

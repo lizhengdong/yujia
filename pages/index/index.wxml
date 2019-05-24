@@ -22,7 +22,7 @@
   </view>
 
   <block wx:for-items="{{yujiaList}}" wx:for-item="yujia">
-    <view class="yujia-item" bindtap="addViewNum" data-id="{{yujia.id}}" data-title="{{yujia.name}}">
+    <view class="yujia-item" bindtap="addViewNum" data-id="{{yujia._id}}">
       <image src="{{yujia.avatar}}" style="width:100%;height:{{systemInfo.windowWidth*item.h/item.w}}px"></image>
       <view class="yujia-header">
         <text>{{yujia.name}}</text>
@@ -44,7 +44,7 @@
       </view>
       <view class='yujia-detail clearfix'>
         <view class='yujia-detail-link'>
-          <navigator url="/pages/yujiaDetail/yujiaDetail?id={{yujia._id}}">详情 >></navigator>
+          <navigator url="/pages/yujiaDetail/yujiaDetail?id={{yujia._id}}">查看详情 >></navigator>
         </view>
       </view>
     </view>
