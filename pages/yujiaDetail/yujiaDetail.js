@@ -76,7 +76,7 @@ Page({
     console.log(yujiaId)
     let shareObj = {
       title: yujiaName,
-      path: '/yujiaDetail/yujiaDetail?id=' + yujiaId
+      path: 'pages/yujiaDetail/yujiaDetail?id=' + yujiaId
     }
     return shareObj
   },

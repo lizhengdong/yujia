@@ -157,7 +157,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '日照渔家乐精选',
-      path: '/index/index'
+      path: 'pages/index/index'
     }
   },
 })
